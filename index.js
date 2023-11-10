@@ -43,12 +43,11 @@ app.post('/send-sms', (req, res) => {
       to: yourPhone
     })
     .then(message => {
-      console.log(message.sid);
-      res.send('SMS sent successfully'); // Handle success case
+      res.send('Email sent successfully');
     })
     .catch(error => {
-      console.log(error);
-      res.send('Error occurred'); // Handle error case
+      console.error(error);
+      res.status(500).send('Error occurred');
     });
 });
 

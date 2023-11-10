@@ -17,6 +17,8 @@
 </head>
 
 <body>
+  <div id="toast" style="display:none; /* your styling here */">Toast Message</div>
+
   <header class="py-4">
     <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
       <div class="container">
@@ -327,7 +329,7 @@
               <div class="card-body">
                 <h5 class="card-title">Prototype Todo</h5>
                 <p class="card-text">Application Todo List: ajout, édition, suppression de tâches, interface simple et intuitive pour organiser vos tâches quotidiennes</p>
-                <a class="btn btn-danger" href="https://github.com/vincenz-cdf/angular-todo">Github</a>
+                <a class="btn btn-danger" href="https://github.com/vincenz-cdf/angular-todo" target="_blank">Github</a>
               </div>
             </div>
           </div>
@@ -337,7 +339,7 @@
               <div class="card-body">
                 <h5 class="card-title">Pomodoro</h5>
                 <p class="card-text">La technique Pomodoro est une méthode de gestion du temps qui consiste à travailler pendant 25 minutes puis à prendre une pause de 5 minutes</p>
-                <a class="btn btn-danger" href="https://vincenz-cdf.github.io/pomodoro/">En savoir plus</a>
+                <a class="btn btn-danger" href="https://vincenz-cdf.github.io/pomodoro/" target="_blank">En savoir plus</a>
               </div>
             </div>
           </div>
@@ -425,3 +427,33 @@
 </body>
 
 </html>
+
+<script>
+  document.getElementById('your-form-id').addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    const formData = new FormData(this);
+    fetch('/send-sms', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+      // Clear the form
+      this.reset();
+  
+      // Show toast notification
+      // Assuming you have a toast element with id 'toast'
+      const toast = document.getElementById('toast');
+      toast.textContent = data; // Set the message
+      toast.style.display = 'block'; // Show the toast
+  
+      // Hide the toast after a few seconds
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    })
+    .catch(error => console.error('Error:', error));
+  });
+  </script>
+  

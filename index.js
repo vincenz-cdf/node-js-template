@@ -19,6 +19,8 @@ app.set('view engine', 'ejs');
 // Twilio configuration
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
+const twilioNumber = process.env.TWILIO_NUMBER;
+const yourPhone = process.env.YOUR_NUMBER;
 
 const client = twilio(accountSid, authToken);
 
@@ -29,13 +31,16 @@ app.get('/', (req, res) => {
 
 // Route to handle form submission and send SMS
 app.post('/send-sms', (req, res) => {
-  const { phone, message } = req.body; // Extract phone and message from form
+  const { firstname, name, email, message } = req.body; // Extract phone and message from form
 
   client.messages
     .create({
-      body: message,
-      from: '+15074618769',
-      to: phone
+      body: `<p>First Name: ${firstname}</p>
+      <p>Last Name: ${name}</p>
+      <p>Email: ${email}</p>
+      <p>Message: ${message}</p>`,
+      from: twilioNumber,
+      to: yourPhone
     })
     .then(message => {
       console.log(message.sid);

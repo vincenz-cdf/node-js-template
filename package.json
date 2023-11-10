@@ -4,11 +4,13 @@
   "description": "joma's template",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
     "ejs": "^3.1.9",
     "express": "^4.16.3",
     "request": "^2.85.0",
-    "tape": "^4.9.0"
+    "tape": "^4.9.0",
+    "twilio": "^4.19.0"
   },
   "scripts": {
     "start": "node index.js",

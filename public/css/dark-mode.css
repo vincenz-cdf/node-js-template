@@ -1,0 +1,28 @@
+/* dark-mode.css */
+
+body, .bg-light {
+    background-color: #343a40 !important;
+    color: #ffffff !important;
+  }
+  
+  .navbar-light .navbar-brand, .navbar-light .nav-link {
+    color: #ffffff !important;
+  }
+  
+  .card {
+    background-color: #495057 !important;
+    color: #ffffff !important;
+  }
+  
+  .bg-light, .btn-light {
+    background-color: #6c757d !important;
+    color: #ffffff !important;
+  }
+  
+  .footer {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+  }
+  
+  /* Other custom dark mode styles... */
+  
